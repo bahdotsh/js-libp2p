@@ -11,7 +11,6 @@ const mergeOptions = require('merge-options')
 const CID = require('cids')
 const ipfsHttpClient = require('ipfs-http-client')
 const DelegatedContentRouter = require('libp2p-delegated-content-routing')
-const multiaddr = require('multiaddr')
 
 const peerUtils = require('../utils/creators/peer')
 const { baseOptions, routingOptions } = require('./utils')
@@ -101,9 +100,7 @@ describe('content-routing', () => {
         host: '0.0.0.0',
         protocol: 'http',
         port: 60197
-      }), [
-        multiaddr('/ip4/0.0.0.0/tcp/60197')
-      ])
+      }))
 
       ;[node] = await peerUtils.createPeer({
         config: mergeOptions(baseOptions, {
@@ -232,9 +229,7 @@ describe('content-routing', () => {
         host: '0.0.0.0',
         protocol: 'http',
         port: 60197
-      }), [
-        multiaddr('/ip4/0.0.0.0/tcp/60197')
-      ])
+      }))
 
       ;[node] = await peerUtils.createPeer({
         config: mergeOptions(routingOptions, {
